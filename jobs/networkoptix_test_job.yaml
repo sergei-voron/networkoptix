@@ -1,0 +1,33 @@
+- job:
+    name: networkoptix-test-job
+    description: |
+        please do not edit this job in web browser
+    concurrent: true
+    disabled: false
+    properties:
+        - disable-resume
+        - build-discarder:
+            num-to-keep: 10
+    project-type: freestyle
+    parameters:
+        - git-parameter:
+              branch: ''
+              name: BRANCH
+              description: Choose branch to checkout
+              type: PT_BRANCH_TAG
+              tagFilter: '*'
+              branchFilter: '*'
+              sortMode: ASCENDING
+              defaultValue: 'master'
+              selectedValue: DEFAULT
+              quickFilterEnabled: false
+        - string:
+            name: OS
+            description: "Choose OS for execution of the pipeline"
+    scm:
+        - git:
+            url: https://github.com/sergei-voron/networkoptix.git
+            shallow-clone: true
+            depth: 1
+            wipe-workspace: true
+            branches: ${params.BRANCH}
