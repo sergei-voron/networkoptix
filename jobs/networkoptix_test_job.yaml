@@ -15,7 +15,7 @@
               name: BRANCH
               description: Choose branch to checkout
               type: PT_BRANCH_TAG
-              tagFilter: 'origin/(.*)'
+              tagFilter: '*'
               branchFilter: 'origin/(.*)'
               sortMode: ASCENDING
               defaultValue: 'master'
