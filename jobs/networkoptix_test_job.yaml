@@ -41,8 +41,25 @@
             branches:
                 - ${BRANCH}
     builders:
-        - shell: |
-                  hstname=$(hostname -s)
-                  echo "Host name: ${hstname}"
+        - shell: python main.py
+        - copyartifact:
+              project: "networkoptix-test-job/OS=linux-agent"
+              filter: '**/*'
+      #          target: /home/foo
+              which-build: downstream-build
+              upstream-project-name: "networkoptix-test-job"
+              upstream-build-number: "${BUILD_NUMBER}"
+              build-number: "${BUILD_NUMBER}"
+              optional: false
+              flatten: false
+      #          do-not-fingerprint: true
+              parameter-filters: PUBLISH=true
+    publishers:
+      - archive:
+          artifacts: '**/*'
+          allow-empty: 'true'
+          fingerprint: true
+          default-excludes: false
+      - chuck-norris
 
-                  
+
