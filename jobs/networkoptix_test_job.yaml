@@ -41,7 +41,7 @@
             branches:
                 - ${BRANCH}
     builders:
-        - shell: python main.py
+        - shell: python3 main.py
         - copyartifact:
               project: "networkoptix-test-job/OS=linux-agent"
               filter: '**/*'
