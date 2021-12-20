@@ -1,14 +1,15 @@
 - job:
-    name: networkoptix-test-job
+    name: networkoptix-test-windows-job
     description: |
         please do not edit this job in web browser
     concurrent: true
     disabled: false
+    node: windows
     properties:
         - disable-resume
         - build-discarder:
             num-to-keep: 10
-    project-type: matrix
+    project-type: freestyle
     parameters:
         - git-parameter:
               branch: ''
@@ -21,19 +22,9 @@
               defaultValue: 'master'
               selectedValue: DEFAULT
               quickFilterEnabled: false
-        - matrix-combinations:
-            name: Platform
-            description: "Select matrix combinations"
-            filter: ""
-
-    axes:
-      - axis:
-          type: slave
-          name: 'OS'
-          values:
-              - 'linux-agent'
-              - 'windows-agent'
-
+        - string:
+            name: OS
+            description: "Choose OS for execution of the pipeline"
     scm:
         - git:
             url: https://github.com/sergei-voron/networkoptix.git
@@ -42,7 +33,6 @@
                 - ${BRANCH}
     builders:
         - shell: |
-                  hstname=$(hostname -s)
-                  echo "Host name: ${hstname}"
+                  hostname
 
                   
