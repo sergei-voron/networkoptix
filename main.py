@@ -8,7 +8,6 @@ from sys import platform as _platform
 
 
 def host_parameters():
-    global hdd_total, hdd_used
     print('Host name: ' + socket.gethostname())
     print('OS version: ' + platform.platform())
     print('CPU cores: ', os.cpu_count())
