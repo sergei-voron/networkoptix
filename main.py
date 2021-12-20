@@ -1,24 +1,25 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import socket
 import os
 import platform
-import sysconfig
+import psutil
+from sys import platform as _platform
 
 def host_parameters():
     # Use a breakpoint in the code line below to debug your script.
     print('Host name: ' + socket.gethostname())
     print('OS version: ' + platform.platform())
     print('CPU cores: ' + str(os.cpu_count()))
-    print('RAM in kib: ' + str(int(os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')/1024)))
-    print('HDD size: ' + socket.gethostname())
-    print('HDD disk usage: ' + socket.gethostname())
-    print('Host name: ' + socket.gethostname())
+    print('RAM in mb: ' + str(int(os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')/1024.**2)))
+    if _platform == "linux" or platform == "linux2":
+        hdd_total = str(int(psutil.disk_usage('/').total/1024.**3))
+        hdd_used = str(int(psutil.disk_usage('/').used/1024.**3))
+    elif platform == "win32":
+        hdd_total = str(int(psutil.disk_usage('C:\\').total/1024.**3))
+        hdd_used = str(int(psutil.disk_usage('C:\\').used/1024.**3))
+    print('HDD size in gb: ' + hdd_total)
+    print('HDD disk usage in gb: ' + hdd_used)
+    print(_platform)
 
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
     host_parameters()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
