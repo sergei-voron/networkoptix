@@ -41,7 +41,7 @@
             branches:
                 - ${BRANCH}
     builders:
-        - shell: python3 main.py
+        - shell: python3 main.py > host_parameters.txt
 #        - copyartifact:
 #              project: "networkoptix-test-job"
 #              filter: '**/*'

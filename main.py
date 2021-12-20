@@ -18,7 +18,6 @@ def host_parameters():
         hdd_used = str(int(psutil.disk_usage('C:\\').used/1024.**3))
     print('HDD size in gb: ' + hdd_total)
     print('HDD disk usage in gb: ' + hdd_used)
-    print(_platform)
 
 
 if __name__ == '__main__':
