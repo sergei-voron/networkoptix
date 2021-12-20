@@ -42,18 +42,18 @@
                 - ${BRANCH}
     builders:
         - shell: python3 main.py
-        - copyartifact:
-              project: "networkoptix-test-job/OS=linux-agent"
-              filter: '**/*'
-      #          target: /home/foo
-              which-build: downstream-build
-              upstream-project-name: "networkoptix-test-job"
-              upstream-build-number: "${BUILD_NUMBER}"
-              build-number: "${BUILD_NUMBER}"
-              optional: false
-              flatten: false
-      #          do-not-fingerprint: true
-              parameter-filters: PUBLISH=true
+#        - copyartifact:
+#              project: "networkoptix-test-job"
+#              filter: '**/*'
+##              target: /home/
+#              which-build: downstream-build
+#              upstream-project-name: "networkoptix-test-job"
+#              upstream-build-number: "${BUILD_NUMBER}"
+#              build-number: "${BUILD_NUMBER}"
+#              optional: true
+#              flatten: true
+#              do-not-fingerprint: fakse
+#              parameter-filters: PUBLISH=true
     publishers:
       - archive:
           artifacts: '**/*'
