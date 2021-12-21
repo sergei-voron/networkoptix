@@ -26,6 +26,18 @@
             description: "Select matrix combinations"
             filter: ""
 
+    scm:
+        - git:
+            url: https://github.com/sergei-voron/networkoptix.git
+            wipe-workspace: true
+            branches:
+                - ${BRANCH}
+                -
+
+    triggers:
+       - pollscm:
+           cron: "*/5 * * * *"
+
     axes:
       - axis:
           type: slave
@@ -34,12 +46,6 @@
               - 'linux-agent'
               - 'windows-agent'
 
-    scm:
-        - git:
-            url: https://github.com/sergei-voron/networkoptix.git
-            wipe-workspace: true
-            branches:
-                - ${BRANCH}
     builders:
         - shell: "python3 main.py > host_parameters.txt"
 #        - copyartifact:
@@ -54,6 +60,7 @@
 #              flatten: true
 #              do-not-fingerprint: fakse
 #              parameter-filters: PUBLISH=true
+
     publishers:
       - archive:
           artifacts: '**/*'
