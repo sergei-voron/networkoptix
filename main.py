@@ -16,7 +16,7 @@ def host_parameters():
     if _platform == "linux" or platform == "linux2":
         hdd_total = int(psutil.disk_usage('/').total / 1024. ** 3)
         hdd_used = int(psutil.disk_usage('/').used / 1024. ** 3)
-    elif platform == "win32":
+    elif _platform == "win32":
         hdd_total = int(psutil.disk_usage('C:').total / 1024. ** 3)
         hdd_used = int(psutil.disk_usage('C:').used / 1024. ** 3)
     print('HDD size in gb: ', hdd_total)
