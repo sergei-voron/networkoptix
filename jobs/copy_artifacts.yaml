@@ -20,10 +20,5 @@
               do-not-fingerprint: false
 
     publishers:
-      - archive:
-          artifacts: '**/*'
-          allow-empty: 'true'
-          fingerprint: true
-          default-excludes: false
       - chuck-norris
 
