@@ -6,7 +6,7 @@
     disabled: false
     properties:
         - copyartifact:
-              projects: copy-artifact
+              projects: copy-artifacts
         - disable-resume
         - build-discarder:
             num-to-keep: 10
