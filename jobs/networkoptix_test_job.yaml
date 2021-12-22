@@ -5,6 +5,8 @@
     concurrent: true
     disabled: false
     properties:
+        - copyartifact:
+              projects: copy-artifact
         - disable-resume
         - build-discarder:
             num-to-keep: 10
@@ -32,7 +34,6 @@
             wipe-workspace: true
             branches:
                 - ${BRANCH}
-                -
 
     triggers:
        - pollscm:
@@ -68,5 +69,7 @@
           fingerprint: true
           default-excludes: false
       - chuck-norris
-
+      - trigger:
+          project: copy-artifacts
+          threshold: FAILURE
 

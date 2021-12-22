@@ -1,27 +1,16 @@
-#!/usr/bin/env python3
+# This is a sample Python script.
 
-import socket
-import os
-import platform
-import psutil
-from sys import platform as _platform
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def host_parameters():
-    print('Host name: ', socket.gethostname())
-    print('OS version: ', platform.platform())
-    print('CPU cores: ', os.cpu_count())
-    # print('RAM in mb: ' + str(int(os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES') / 1024. ** 2)))
-    print('RAM memory total mb:', int(psutil.virtual_memory()[0] / 1024. ** 2))
-    if _platform == "linux" or platform == "linux2":
-        hdd_total = int(psutil.disk_usage('/').total / 1024. ** 3)
-        hdd_used = int(psutil.disk_usage('/').used / 1024. ** 3)
-    elif _platform == "win32":
-        hdd_total = int(psutil.disk_usage('C:').total / 1024. ** 3)
-        hdd_used = int(psutil.disk_usage('C:').used / 1024. ** 3)
-    print('HDD size in gb: ', hdd_total)
-    print('HDD disk usage in gb: ', hdd_used)
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    host_parameters()
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

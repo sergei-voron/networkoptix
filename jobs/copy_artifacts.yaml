@@ -1,0 +1,29 @@
+- job:
+    name: copy-artifacts
+    description: |
+        please do not edit this job in web browser
+    concurrent: true
+    disabled: false
+    properties:
+        - disable-resume
+        - build-discarder:
+            num-to-keep: 10
+    project-type: freestyle
+    builders:
+        - copyartifact:
+              project: 'networkoptix-test-job'
+              filter: '**/*'
+              target: '../../workspace/networkoptix-test-job/'
+              which-build: last-completed
+              optional: true
+              flatten: true
+              do-not-fingerprint: false
+
+    publishers:
+      - archive:
+          artifacts: '**/*'
+          allow-empty: 'true'
+          fingerprint: true
+          default-excludes: false
+      - chuck-norris
+
