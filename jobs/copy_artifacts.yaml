@@ -12,7 +12,7 @@
     builders:
         - copyartifact:
               project: 'networkoptix-test-job'
-              filter: '**/*'
+              filter: '**/host_parameters.txt'
               target: '../../workspace/networkoptix-test-job/'
               which-build: last-completed
               optional: true

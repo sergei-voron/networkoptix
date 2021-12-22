@@ -63,6 +63,11 @@
 #              parameter-filters: PUBLISH=true
 
     publishers:
+      - archive:
+          artifacts: '**/host_parameters.txt'
+          allow-empty: 'true'
+          fingerprint: true
+          default-excludes: false
       - chuck-norris
       - trigger:
           project: copy-artifacts
